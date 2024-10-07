@@ -7,7 +7,7 @@ interface BillboardProps {
 
 import React from 'react'
 
-const BillboardProps: React.FC<BillboardProps> = ({ data }) => {
+const Billboard: React.FC<BillboardProps> = ({ data }) => {
     return (
         <div className="p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden">
             <div
@@ -26,4 +26,4 @@ const BillboardProps: React.FC<BillboardProps> = ({ data }) => {
     )
 }
 
-export default BillboardProps
+export default Billboard
