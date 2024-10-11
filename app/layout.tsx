@@ -3,6 +3,8 @@ import "./globals.css";
 import { Urbanist } from "next/font/google"
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
+import ModalProvider from "@/providers/modal-provide";
+import { Toaster } from "sonner";
 
 const font = Urbanist({
   weight:["500", "600", "700", "400"],
@@ -25,6 +27,8 @@ export default function RootLayout({
         className={`${font.className} antialiased`}
       >
         <Navbar/>
+        <ModalProvider/>
+        <Toaster/>
         {children}
         <Footer/>
       </body>

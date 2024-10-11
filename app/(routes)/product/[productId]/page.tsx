@@ -18,7 +18,6 @@ async function ProductPage({params}: ProductPageProps) {
     categoryId: product?.category?.id
   })
 
-  //const suggestedProducts = results.filter(p => p.id!== product.id)
 if(!product) return redirect("/")
   return (
     <div className='bg-white'>
@@ -26,7 +25,6 @@ if(!product) return redirect("/")
       <Container>
         <div className="px-4 py-10 sm:px-6 lg:px-8">
            <div className="grid lg:grid-cols-2 lg:items-start lg:gap-x-2">
-            {/* GALLERY */}
             {product?.images.length && <Gallery data={product?.images}/>}
             <div className="mt-10 lg:px-4 sm:mt-16 sm:px-0 lg:mt-0">
               <Info data={product}/>

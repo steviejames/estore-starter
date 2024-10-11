@@ -4,6 +4,9 @@ import Currency from './ui/currency';
 import { Dimensions, Product } from '@/types';
 import Button from './ui/button';
 import { ShoppingCart } from 'lucide-react';
+import { getAttributes } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
+import useCart from '@/hooks/use-cart';
 
 
 
@@ -14,10 +17,7 @@ interface ProductDetailsProps {
 function Info({ data }: ProductDetailsProps) {
     
   const attributes = data?.attributes || {};
-  const attributeTypes = data.productType.attributes.reduce((acc, attr) => {
-    acc[attr.key] = attr.label;
-    return acc;
-  }, {} as Record<string, string>);
+  const attributeTypes = getAttributes(data)
 
   const renderAttributeValue = (key: string, value: any) => {
     if (key.toLowerCase() === 'color' && typeof value === 'string') {
@@ -40,9 +40,9 @@ function Info({ data }: ProductDetailsProps) {
     }
     return <div className=''>{String(value)}</div>;
   };
-
+  const cart = useCart()
   return (
-    <div>
+    <div className='w-full'>
       <h1 className='text-3xl font-bold text-gray-900'>{data.name}</h1>
       <div className="mt-3 flex items-end justify-between">
         <p className='text-2xl text-gray-900'>
@@ -50,7 +50,7 @@ function Info({ data }: ProductDetailsProps) {
         </p>
       </div>
       <hr className='my-6' />
-      <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-x-4 flex-wrap gap-y-6'>
+      <div className='flex gap-x-4 flex-wrap gap-y-6'>
         {Object.entries(attributes).map(([key, value]) => (
           <div key={key} className='flex items-center gap-x-4 text-left'>
             <h3 className='font-bold text-black'>{attributeTypes[key] || key}:</h3>
@@ -60,7 +60,7 @@ function Info({ data }: ProductDetailsProps) {
       </div>
 
       <div className='mt-10'>
-            <Button className='flex items-center gap-x-2'>
+            <Button onClick={ ()=>cart.addItem(data)} className='flex items-center gap-x-2'>
                 Adicionar ao carrinho
                 <ShoppingCart/>
             </Button>
