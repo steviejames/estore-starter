@@ -3,28 +3,37 @@ import axios from "axios"
 import Currency from "@/components/ui/currency"
 import useCart from "@/hooks/use-cart"
 import Button from "@/components/ui/button"
-import { useSearchParams } from "next/navigation"
-import { useEffect } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
+import { useEffect, useState } from "react"
 import { toast } from "sonner"
 
 
 
 const Summary = () => {
+    const [isMounted, setIsmounted] = useState(false)
+
+
     const searchParams = useSearchParams()
-    
+    const router = useRouter()
     const cart = useCart()
 
+
     useEffect(()=>{
-        if(searchParams.get('success')){
+        setIsmounted(true)
+    },[])
+
+    useEffect(()=>{
+        if(searchParams.get('success') && isMounted){
             toast.success("Finalizado com sucesso")
             cart.removeAll()
+            router.push("/orders")
         }
 
         if(searchParams.get('canceled')){
             toast.error("Alguma coisa correu mal.")
         }
 
-    },[searchParams, cart.removeAll])
+    },[searchParams, cart.removeAll, isMounted])
 
     const totalPrice = cart.items.reduce((acc, curr) => {
         return acc + (curr.quantity * Number(curr.price))
@@ -39,7 +48,7 @@ const Summary = () => {
             })
             window.location = response.data.url
         } catch (error) {
-            console.log(error?.message)
+            console.log(error)
             toast.error("Algo correu mal")
         }
     }   
