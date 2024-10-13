@@ -1,5 +1,5 @@
 "use client"
-import { Book, Product } from '@/types'
+import { Book } from '@/types'
 import Image from 'next/image'
 import React, { MouseEventHandler } from 'react'
 import IconButton from './icon-button'
@@ -43,13 +43,13 @@ function ProductCard({ data }: ProductCard) {
                 <div className='opacity-0 group-hover:opacity-100 z-30 transition absolute w-full px-6 bottom-5'>
                     <div className='flex gap-x-6 justify-center'>
                         <IconButton
-                            //@ts-expect-error
+                            //@ts-expect-error type errors
                             onClick={onPreview}
                             icon={<Expand size={20} className='text-gray-600' />}
                         />
 
                         <IconButton
-                            //@ts-expect-error
+                            //@ts-expect-error type errors
                             onClick={onAddToCart}
                             icon={<ShoppingCart size={20} className='text-gray-600' />}
                         />
@@ -60,6 +60,7 @@ function ProductCard({ data }: ProductCard) {
                 <p className='text-lg font-bold'>{data.name}</p>
                 <div className='flex items-center gap-x-2 text-gray-500'>
                     <User className='h-4 w-4' />
+                    {/* @ts-expect-error type errors */}
                     <p className='text-sm '>{data?.attributes.author || "Autor desconhecido"}</p>
 
                 </div>

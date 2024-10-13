@@ -2,9 +2,8 @@ import { formatPrice } from '@/lib/utils'
 import React from 'react'
 import NewJourney from './new-journey'
 
-type Props = {}
 
-const Overview = (props: Props) => {
+const Overview = () => {
     return (
         <div>
             <NewJourney />

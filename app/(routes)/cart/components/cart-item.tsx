@@ -7,7 +7,6 @@ import IconButton from "@/components/ui/icon-button"
 import Currency from "@/components/ui/currency"
 import useCart from "@/hooks/use-cart"
 import { Product } from "@/types"
-import { getAttributes } from "@/lib/utils"
 import Link from "next/link"
 
 

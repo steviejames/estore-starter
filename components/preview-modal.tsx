@@ -6,9 +6,8 @@ import Gallery from './gallery'
 import Info from './product-info'
 import NoResults from './ui/no-results'
 
-type Props = {}
 
-function PreviewModal({}: Props) {
+function PreviewModal() {
     const {data:product,isOpen, onClose} = usePreviewModal()
 
     if(!product) return null

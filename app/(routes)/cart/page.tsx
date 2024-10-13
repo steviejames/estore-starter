@@ -5,9 +5,8 @@ import React, { useEffect, useState } from 'react'
 import CartItem from './components/cart-item'
 import Summary from './components/summary'
 
-type Props = {}
 
-const CartPage = (props: Props) => {
+const CartPage = () => {
     const [isMounted, setIsmounted] = useState(false)
     const cart = useCart()
     useEffect(() => {

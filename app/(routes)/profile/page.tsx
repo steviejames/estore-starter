@@ -1,12 +1,10 @@
 "use client"
 import { UserProfile } from '@clerk/clerk-react'
-import { UserButton } from '@clerk/nextjs'
-import { User, History } from 'lucide-react'
+import { History } from 'lucide-react'
 import React from 'react'
 
-type Props = {}
 
-const ProfilePage = (props: Props) => {
+const ProfilePage = () => {
     return (
         <div className='flex justify-center items-center  mt-10'>
             <UserProfile>

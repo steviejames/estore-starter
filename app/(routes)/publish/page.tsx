@@ -1,14 +1,13 @@
 "use client"
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Book, FileText, User, Tag, Info, Upload, AlertCircle } from 'lucide-react';
+import {  Info, Upload,  } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
-import Iphone15Pro from '@/components/ui/iphone-15-pro';
 import BuildingPage from '@/components/building-page';
 
 export default function SubmeterObra() {
-  const { register, handleSubmit, formState: { errors }, watch } = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       titulo: '',
       autor: '',
@@ -20,7 +19,7 @@ export default function SubmeterObra() {
     }
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: unknown) => {
     console.log('Dados do formulário:', data);
     toast.success('Obra submetida com sucesso!');
   };

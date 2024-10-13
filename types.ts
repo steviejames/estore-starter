@@ -21,7 +21,7 @@ export interface Product {
     imageUrl: string
     images: Image[];
     productType: ProductType
-    attributes: any
+    attributes: unknown
 }
 
 

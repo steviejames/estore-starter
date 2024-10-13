@@ -1,10 +1,9 @@
 "use client"
 import { useState } from 'react'
-import { Menu, Bell, Search, ChevronDown, Book, BarChart2, Settings, HelpCircle, Plus } from 'lucide-react'
+import { Menu, Bell, Search } from 'lucide-react'
 import Bookshelf from './components/bookshelf'
 import Reports from './components/reports'
 import Overview from './components/overview'
-import NewJourney from './components/new-journey'
 
 export default function PainelDoAutor() {
   const [abaAtiva, setAbaAtiva] = useState('painel')
@@ -48,7 +47,7 @@ export default function PainelDoAutor() {
         {/* Nova Jornada do Livro */}
         {abaAtiva === 'painel' && <Overview />}
         {abaAtiva === 'estante' && <Bookshelf />}
-        {abaAtiva === 'relatorios' && <Reports />}
+        {abaAtiva === 'relatórios' && <Reports />}
       </main>
     </div>
   )

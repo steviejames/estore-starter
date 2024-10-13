@@ -5,7 +5,6 @@ import { Dimensions, Product } from '@/types';
 import Button from './ui/custom-button';
 import { ShoppingCart } from 'lucide-react';
 import { getAttributes } from '@/lib/utils';
-import { useRouter } from 'next/navigation';
 import useCart from '@/hooks/use-cart';
 
 

@@ -1,4 +1,4 @@
-import { getCategories, getCategory } from '@/actions/get-categories'
+import {  getCategory } from '@/actions/get-categories'
 import getProductTypes from '@/actions/get-product-types'
 import { getProducts } from '@/actions/products'
 import Billboard from '@/components/billboard'

@@ -94,7 +94,7 @@ export default function Component() {
           </div>
         </div>
         <p className="text-sm text-gray-400 mb-8">
-          Achilles, "The Best Of All The Greeks," Son Of The Cruel Sea Goddess Thetis And The Legendary King Peleus, Is Strong, Swift, And Beautiful, Irresistible To All Who Meet Him. Patroclus Is An Awkward Young Prince, Exiled From His Homeland After An Act Of Shocking Violence. Brought Together By Chance, They Forge An Inseparable Bond, Despite Risking The Gods' Wrath. They Are Trained By The Centaur Chiron In The Arts Of War And Medicine, But When Word Comes That Helen Of Sparta Has Been...
+          Achilles, The Best Of All The Greeks, Son Of The Cruel Sea Goddess Thetis And The Legendary King Peleus, Is Strong, Swift, And Beautiful, Irresistible To All Who Meet Him. Patroclus Is An Awkward Young Prince, Exiled From His Homeland After An Act Of Shocking Violence. Brought Together By Chance, They Forge An Inseparable Bond, Despite Risking The Gods Wrath. They Are Trained By The Centaur Chiron In The Arts Of War And Medicine, But When Word Comes That Helen Of Sparta Has Been...
         </p>
         <div className="flex space-x-4">
           <button className="flex-1 bg-gray-800 text-white rounded-full py-3 font-semibold">Read Book</button>

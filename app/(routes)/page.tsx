@@ -1,12 +1,9 @@
 import { getProducts } from '@/actions/products'
-import ProductList from '@/components/product-list'
 import Button from '@/components/ui/custom-button'
-import Container from '@/components/ui/container'
 import { Book } from '@/types'
-import { Bookmark, ChevronRight, PenTool, Search, TrendingUp } from 'lucide-react'
+import { Bookmark, ChevronRight, PenTool,  TrendingUp } from 'lucide-react'
 import React from 'react'
 import Link from 'next/link'
-import Iphone15Pro from '@/components/ui/iphone-15-pro'
 
 export const revalidate = 0
 async function HomePage() {
@@ -21,6 +18,7 @@ async function HomePage() {
     console.log(error)
   }
 
+  console.log(products)
 
   return (
     <div className=' overflow-hidden'>

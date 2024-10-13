@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Menu, Bell, Search, ChevronDown, Book, BarChart2, Settings, HelpCircle, Eye, Filter, Grid, List } from 'lucide-react'
+import {  Grid, List } from 'lucide-react'
 
 const books = [
   { id: 1, title: "The Song of Achilles", author: "Madeline Miller", cover: "/placeholder.svg?height=200&width=150" },

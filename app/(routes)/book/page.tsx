@@ -1,16 +1,12 @@
 "use client"
 import Button from "@/components/ui/custom-button"
-import ProductList from "@/components/product-list"
 import Container from "@/components/ui/container"
-import { Book } from "@/types"
 import Image from "next/image"
-import usePreviewModal from "@/hooks/use-preview-modal"
 import { useState } from "react"
 import WatingListModal from "@/components/wating-list-modal"
 import CategoryMap from "@/components/category-map"
 export default  function ProductsPage() {
   const [show, setShow] = useState(false)
-  let products: Book[] | undefined
   return (
     <>
     

@@ -1,8 +1,6 @@
 "use client"
 import React from 'react'
 import Modal from './ui/modal'
-import usePreviewModal from '@/hooks/use-preview-modal'
-import BuildingPage from './building-page'
 type Props = {
   open: boolean
   onClose: () => void

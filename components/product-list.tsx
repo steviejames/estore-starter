@@ -1,4 +1,4 @@
-import { Book, Product } from '@/types'
+import { Book,  } from '@/types'
 import React from 'react'
 import NoResults from './ui/no-results'
 import ProductCard from './ui/product-card'

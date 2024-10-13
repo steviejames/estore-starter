@@ -1,8 +1,7 @@
 "use client"
 import React from 'react'
-import { useParams, useRouter } from 'next/navigation'
-import { Book, Calendar, MessageCircle, Users, ArrowLeft, Star } from 'lucide-react'
-import Link from 'next/link'
+import { Book, Calendar, MessageCircle, Users } from 'lucide-react'
+import BuildingPage from '@/components/building-page'
 
 // Simulação de dados do clube
 const clubeData = {
@@ -24,16 +23,16 @@ const clubeData = {
 }
 
 export default function ClubeSingle() {
-  const router = useRouter()
-  const { clubId } = useParams()
-
+ 
   // Na implementação real, você buscaria os dados do clube com base no ID
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
     
-
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+<div className='flex justify-center items-center'>
+<BuildingPage/>
+</div>
+      <main className="max-w-7xl hidden mx-auto py-6 sm:px-6 lg:px-8">
         <div className="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-lg">
           <div className="px-4 py-5 sm:px-6 flex items-start">
             <img
