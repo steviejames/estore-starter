@@ -16,39 +16,15 @@ const useCart = create(
         
         
         addItem: (data: Product) => {
-            const currentItems = get().items;
-            const existingItem = currentItems.find((item) => item.id === data.id);
-            
-            if (existingItem) {
-                set({
-                    items: currentItems.map((item) =>
-                        item.id === data.id
-                            ? { ...item, quantity: item.quantity + 1 }
-                            : item
-                    ),
-                });
-            } else {
-                set({ items: [...currentItems, { ...data, quantity: 1 }] });
-            }
-            
+            const currentItems = get().items;         
+            set({ items: [...currentItems, { ...data, quantity: 1 }] });
             toast.success("Item adicionado ao carrinho");
         },
         removeItem: (id: string) => {
             const currentItems = get().items;
-            const existingItem = currentItems.find((item) => item.id === id);
+            set({ items: currentItems.filter((item) => item.id !== id) });
+            toast.success("Item removido do carrinho");
             
-            if (existingItem && existingItem.quantity > 1) {
-                set({
-                    items: currentItems.map((item) =>
-                        item.id === id
-                            ? { ...item, quantity: item.quantity - 1 }
-                            : item
-                    ),
-                });
-            } else {
-                set({ items: currentItems.filter((item) => item.id !== id) });
-                toast.success("Item removido do carrinho");
-            }
         },
         removeAll: () => {
             set({ items: [] })

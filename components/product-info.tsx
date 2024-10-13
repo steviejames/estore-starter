@@ -2,7 +2,7 @@
 import React from 'react';
 import Currency from './ui/currency';
 import { Dimensions, Product } from '@/types';
-import Button from './ui/button';
+import Button from './ui/custom-button';
 import { ShoppingCart } from 'lucide-react';
 import { getAttributes } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
@@ -18,7 +18,6 @@ function Info({ data }: ProductDetailsProps) {
     
   const attributes = data?.attributes || {};
   const attributeTypes = getAttributes(data)
-
   const renderAttributeValue = (key: string, value: any) => {
     if (key.toLowerCase() === 'color' && typeof value === 'string') {
       return (
@@ -49,6 +48,12 @@ function Info({ data }: ProductDetailsProps) {
           <Currency value={data.price} />
         </p>
       </div>
+
+      <hr className='my-6' />
+<div>
+  <h3 className='font-bold text-black'>Sinopse</h3>
+  <p className='text-gray-500'>{data.description}</p>
+</div>
       <hr className='my-6' />
       <div className='flex gap-x-4 flex-wrap gap-y-6'>
         {Object.entries(attributes).map(([key, value]) => (
@@ -58,10 +63,10 @@ function Info({ data }: ProductDetailsProps) {
           </div>
         ))}
       </div>
-
+ 
       <div className='mt-10'>
             <Button onClick={ ()=>cart.addItem(data)} className='flex items-center gap-x-2'>
-                Adicionar ao carrinho
+                Adquirir
                 <ShoppingCart/>
             </Button>
       </div>

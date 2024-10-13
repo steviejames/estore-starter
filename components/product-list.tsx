@@ -1,4 +1,4 @@
-import { Product } from '@/types'
+import { Book, Product } from '@/types'
 import React from 'react'
 import NoResults from './ui/no-results'
 import ProductCard from './ui/product-card'
@@ -6,7 +6,7 @@ import ProductCard from './ui/product-card'
 
 interface ProductListProps {
     title: string,
-    items: Product[]
+    items: Book[]
 }
 function ProductList({title, items}:ProductListProps) {
   return (
@@ -14,7 +14,7 @@ function ProductList({title, items}:ProductListProps) {
         <h3 className='font-bold text-3xl'>{title}</h3>
 
         {
-            items.length === 0 &&<NoResults/>
+            items.length === 0 &&<NoResults count='0'/>
         }
 
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 gap-y-4'>

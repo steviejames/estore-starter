@@ -5,15 +5,12 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
-
-
-export function formatPrice(price: string | number, currency: string = "AOA") {
+export function formatPrice(price: number | string) {
   return new Intl.NumberFormat("pt-AO", {
     style: "currency",
-    currency: currency,
+    currency: "AOA",
   }).format(Number(price));
 }
-
 
 export function getAttributes(data: Product) {
   return data.productType.attributes.reduce((acc, attr) => {

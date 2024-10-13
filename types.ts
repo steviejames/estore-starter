@@ -13,6 +13,7 @@ export interface Category {
 export interface Product {
     id: string;
     category: category;
+    description?: string;
     name:string;
     price: string | number
     type: string;
@@ -21,6 +22,13 @@ export interface Product {
     images: Image[];
     productType: ProductType
     attributes: any
+}
+
+
+export interface Book extends Product {
+    author: string;
+    genre: string;
+    
 }
 
 export interface Image {

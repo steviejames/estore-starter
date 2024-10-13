@@ -1,12 +1,15 @@
 "use client"
 import PreviewModal from '@/components/preview-modal'
 import React, { useEffect, useState } from 'react'
+import BuildingPage from '@/components/building-page'
+import usePreviewModal from '@/hooks/use-preview-modal'
 
-type Props = {}
+interface ModalProviderProps {
+}
 
-const ModalProvider = (props: Props) => {
+const ModalProvider = (props: ModalProviderProps) => {
   const [isMounted, setIsMounted] = useState(false)
-
+  const {modal} = usePreviewModal()
   useEffect(() => {
     setIsMounted(true)
   }, [])
@@ -14,7 +17,7 @@ const ModalProvider = (props: Props) => {
   if (!isMounted) return null
   return (
     <>
-      <PreviewModal />
+      {modal === "building" ? <BuildingPage /> : <PreviewModal />}
     </>
 
   )

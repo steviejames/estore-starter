@@ -31,13 +31,10 @@ const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
     return (
         <div className='white'>
             <Container>
-
                 <Billboard data={category.billboard} />
                 <div className='px-4 sm:px-6 lg:px-8 pb-24'>
                     <div className='lg:grid lg:grid-cols-5 lg:gap-x-8'>
-                   
-                            <MobileFilters productTypes={productTypes} />
-                     
+                        <MobileFilters productTypes={productTypes} />
                         <div className='hidden lg:block'>
                             <Filter
                                 valueKey="productTypeId"
@@ -53,9 +50,6 @@ const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
                                 ))}
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
             </Container>

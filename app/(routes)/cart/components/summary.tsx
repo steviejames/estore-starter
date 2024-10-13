@@ -2,10 +2,11 @@
 import axios from "axios"
 import Currency from "@/components/ui/currency"
 import useCart from "@/hooks/use-cart"
-import Button from "@/components/ui/button"
+import Button from "@/components/ui/custom-button"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import { toast } from "sonner"
+import { useUser } from "@clerk/nextjs"
 
 
 
@@ -16,7 +17,7 @@ const Summary = () => {
     const searchParams = useSearchParams()
     const router = useRouter()
     const cart = useCart()
-
+    const {user} = useUser()
 
     useEffect(()=>{
         setIsmounted(true)
@@ -44,7 +45,13 @@ const Summary = () => {
             const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
                 products: cart.items.map((item)=>{
                     return {id: item.id, quantity: item.quantity}
-                })
+                }),
+                customer: {
+                    id: user?.id,
+                    email: user?.emailAddresses[0].emailAddress,
+                    name: `${user?.firstName} ${user?.lastName}`
+                }
+
             })
             window.location = response.data.url
         } catch (error) {

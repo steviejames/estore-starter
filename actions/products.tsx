@@ -1,5 +1,5 @@
 import axios from "axios"
-import {  Product } from "@/types";
+import {  Book, Product } from "@/types";
 import qs from 'query-string'
 
 
@@ -11,7 +11,7 @@ interface Query {
 }
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`
 
-export const getProducts = async (query:Query): Promise<Product[]>=> {
+export const getProducts = async (query:Query): Promise<Book[]>=> {
    const url = qs.stringifyUrl({
     url: URL,
     query:{

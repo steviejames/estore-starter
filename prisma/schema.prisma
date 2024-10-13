@@ -1,0 +1,119 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model UserProfile {
+  id             String         @id @default(cuid()) @map("_id")
+  userId         String // ID do usuário no Clerk
+  role           String // "leitor", "escritor", ou "admin"
+  bio            String?
+  favoriteGenres String[] // Array de gêneros favoritos
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  reviews        Review[]
+  purchases      Purchase[]
+  bookAccesses   BookAccess[]
+  contestEntries ContestEntry[]
+}
+
+model Book {
+  id             String         @id @default(cuid()) @map("_id")
+  productId      String // ID do livro no CMS externo
+  title          String
+  author         String
+  price          Float
+  createdAt      DateTime       @default(now())
+  sinopse        String?
+  reviews        Review[]
+  purchases      Purchase[]
+  bookAccesses   BookAccess[]
+  contestEntries ContestEntry[]
+}
+
+model Review {
+  id        String      @id @default(cuid()) @map("_id")
+  userId    String
+  bookId    String
+  rating    Int
+  comment   String?
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  user      UserProfile @relation(fields: [userId], references: [id])
+  book      Book        @relation(fields: [bookId], references: [id])
+
+  @@unique([userId, bookId])
+}
+
+model Purchase {
+  id           String      @id @default(cuid()) @map("_id")
+  userId       String
+  bookId       String
+  purchaseDate DateTime    @default(now())
+  user         UserProfile @relation(fields: [userId], references: [id])
+  book         Book        @relation(fields: [bookId], references: [id])
+
+  @@unique([userId, bookId])
+}
+
+model BookAccess {
+  id           String      @id @default(cuid()) @map("_id")
+  userId       String
+  bookId       String
+  lastAccessed DateTime    @updatedAt
+  user         UserProfile @relation(fields: [userId], references: [id])
+  book         Book        @relation(fields: [bookId], references: [id])
+
+  @@unique([userId, bookId])
+}
+
+model LiteraryContest {
+  id          String         @id @default(cuid()) @map("_id")
+  title       String
+  description String?
+  startDate   DateTime
+  endDate     DateTime
+  createdAt   DateTime       @default(now())
+  entries     ContestEntry[]
+}
+
+model ContestEntry {
+  id             String          @id @default(cuid()) @map("_id")
+  contestId      String
+  userId         String
+  bookId         String
+  submissionDate DateTime        @default(now())
+  contest        LiteraryContest @relation(fields: [contestId], references: [id])
+  user           UserProfile     @relation(fields: [userId], references: [id])
+  book           Book            @relation(fields: [bookId], references: [id])
+
+  @@unique([contestId, userId, bookId])
+}
+
+model Club {
+  id             String   @id @default(cuid()) @map("_id")
+  ownerId        String
+  userId         String
+  bookId         String
+  submissionDate DateTime @default(now())
+
+  @@unique([ownerId, bookId])
+}
+
+
+model Feedback {
+  id String @id @default(cuid()) @map("_id")
+  userId String?
+  message String
+  email String?
+  page String?
+  createdAt DateTime @default(now())
+
+}

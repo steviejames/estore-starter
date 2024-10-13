@@ -1,30 +1,30 @@
 "use client"
 import { cn } from '@/lib/utils'
-import { Category } from '@/types'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 
 interface MainNavProps {
-    data: Category[]
+    data: ({href: string, name: string, status: boolean})[]
 }
 function MainNav({ data }: MainNavProps) {
     const pathname = usePathname()
     const routes = data.map((route) => ({
-        href: `/category/${route.id}`,
+        href: route.href,
         label: route.name,
-        active: `/category/${route.id}` === pathname,
+        active: route.status
+
     }))
 
     return (
-        <nav className='mx-6 flex items-center space-x-4 lg:space-x-6'>
+        <nav className='mx-6  items-center space-x-4 lg:space-x-6 hidden md:flex'>
 
-            <Link key={"home"} href={"/"} className={cn("text-sm font-medium transition-colors hover:text-black", `/` === pathname ? "text-black" : "text-neutral-500")}>
+            <Link key={"home"} href={"/"} className={cn("font-medium transition-colors hover:text-black", `/` === pathname ? "text-[#65b443]" : "text-neutral-500")}>
                 Início
             </Link>
             {
                 routes.map((route) => (
-                    <Link key={route.href} href={route.href} className={cn("text-sm font-medium transition-colors hover:text-black", route.active ? "text-black" : "text-neutral-500")}>
+                    <Link key={route.href} href={route.href} className={cn("font-medium transition-colors hover:text-black", route.active ? "text-[#65b443]" : "text-neutral-500")}>
                         {route.label}
                     </Link>
                 ))

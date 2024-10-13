@@ -18,7 +18,6 @@ interface CartItemProps {
 export default function CartItem({ data }: CartItemProps) {
 
     const cart = useCart()
-const attributes = getAttributes(data)
     return (
         <li className="flex py-6 border-b">
             <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
@@ -52,7 +51,7 @@ const attributes = getAttributes(data)
                     </div>
                    <div>
                    <Currency value={data.price}/>
-                   <div className="flex items-center gap-x-2 mt-4">
+                   <div className="hidden flex items-center gap-x-2 mt-4">
                    <IconButton className="bg-muted shadow-none" onClick={()=> data.quantity >1 && cart.removeItem(data.id)} icon={<Minus size={12}/>}/>
                    <p className="text-gray-500">x {data.quantity}</p>
                    <IconButton className="bg-muted shadow-none" onClick={()=>cart.addItem(data)} icon={<Plus size={12}/>}/>
